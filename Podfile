@@ -6,6 +6,11 @@ target 'MessengerApplication' do
   use_frameworks!
 
   # Pods for MessengerApplication
+ 
+
+#pod 'Firebase/Auth' 
+
+#pod 'Firebase/Analytics'
 
   target 'MessengerApplicationTests' do
     inherit! :search_paths

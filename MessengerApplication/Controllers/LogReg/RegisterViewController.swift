@@ -7,23 +7,59 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+        
+            }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedPhoto = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        imageProfile.image = selectedPhoto
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+       /// imagePickerController.sourceType = .camera
+        imagePickerController.delegate = self
+        present(imagePickerController,animated: true,completion: nil)
+        
+        
+    }
+    @IBOutlet weak var imageProfile: UIImageView!
+    
+    @IBOutlet weak var FirstNameTextField: UITextField!
+    
+    
+    @IBOutlet weak var LastNameTextField: UITextField!
+ 
+    
+    @IBOutlet weak var EmailTextFieldReg: UITextField!
+    
+    
+    @IBOutlet weak var PassworTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        imageProfile.layer.cornerRadius = imageProfile.frame.size.width/2
+        imageProfile.clipsToBounds = true 
+      
+        
+        
+        // UITapGesture
+
+        
+        
+        
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
+   
 
 }
