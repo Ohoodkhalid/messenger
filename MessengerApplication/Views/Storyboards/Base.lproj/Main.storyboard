@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -200,16 +201,21 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="registerButton:" destination="pjs-dh-HYQ" eventType="touchUpInside" id="CK8-UD-jFC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UyW-IS-TAB">
-                                <rect key="frame" x="132" y="106" width="150" height="149"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UyW-IS-TAB">
+                                <rect key="frame" x="147" y="107" width="120" height="117"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="OPI-YI-IpR"/>
-                                    <constraint firstAttribute="height" constant="150" id="g6a-f4-6Wm"/>
+                                    <constraint firstAttribute="width" constant="120" id="OPI-YI-IpR"/>
+                                    <constraint firstAttribute="height" constant="120" id="g6a-f4-6Wm"/>
                                 </constraints>
+                                <imageReference key="image" image="person.fill" catalog="system" symbolScale="default"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="V2d-Gk-s4W" appends="YES" id="JWW-D4-401"/>
                                 </connections>
@@ -236,7 +242,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5RA-Qr-e4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="V2d-Gk-s4W">
                     <connections>
-                        <action selector="selectImageFromPhotoLibrary:" destination="pjs-dh-HYQ" id="i5G-iD-9Gg"/>
+                        <action selector="selectImageFromPhotoLibraryOrCamera:" destination="pjs-dh-HYQ" id="K2W-Wx-Urd"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -321,7 +327,7 @@
     </scenes>
     <resources>
         <image name="Facebook_Messenger-Logo.wine" width="3000" height="2000"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
