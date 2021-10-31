@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F015D285272F04D2005B39CB /* DatabaseManger .swift in Sources */ = {isa = PBXBuildFile; fileRef = F015D284272F04D2005B39CB /* DatabaseManger .swift */; };
 		F07D4B86272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
 		F07D4B87272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
 		F07D4B88272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F015D284272F04D2005B39CB /* DatabaseManger .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManger .swift"; sourceTree = "<group>"; };
 		F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0AE09D7272947490054DF39 /* MessengerApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE09DA272947490054DF39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		F0AE09CE272947490054DF39 = {
 			isa = PBXGroup;
 			children = (
+				F015D284272F04D2005B39CB /* DatabaseManger .swift */,
 				F0AE0A20272979760054DF39 /* ConversationViewController.xib */,
 				F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */,
 				F0AE0A1627296B980054DF39 /* NewConversationViewController.xib */,
@@ -375,6 +378,7 @@
 				F0AE0A21272979760054DF39 /* ConversationViewController.swift in Sources */,
 				F0AE0A1327296B450054DF39 /* RegisterViewController.swift in Sources */,
 				F0AE09DB272947490054DF39 /* AppDelegate.swift in Sources */,
+				F015D285272F04D2005B39CB /* DatabaseManger .swift in Sources */,
 				F0AE0A1B27296D550054DF39 /* ProfileViewController.swift in Sources */,
 				F0AE09DD272947490054DF39 /* SceneDelegate.swift in Sources */,
 				F0AE0A0C2729685D0054DF39 /* extension.swift in Sources */,

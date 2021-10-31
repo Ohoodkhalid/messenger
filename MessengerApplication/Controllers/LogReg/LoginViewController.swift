@@ -26,14 +26,32 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func LogInButton(_ sender: UIButton) {
-        FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { authResult, error in
+       
+        // Firebase Login
+        FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { [weak self] authResult, error in
+            guard let strongSelf = self else {
+                return
+            }
             guard let result = authResult, error == nil else {
-                print("Failed to log in user with email \(self.emailTextField)")
+                print("Failed to log in user with email \(String(describing: self!.emailTextField))")
                 return
             }
             let user = result.user
             print("logged in user: \(user)")
+            // if this succeeds, dismiss
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
+
+        
+        /*FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { [weak self] authResult, error in
+           
+            guard let result = authResult, error == nil else {
+                print("Failed to log in user with email \(String(describing: self.emailTextField))")
+                return
+            }
+            let user = result.user
+            print("logged in user: \(user)")
+        })*/
         
 
        

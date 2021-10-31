@@ -11,12 +11,14 @@ import Firebase
 class ConversationViewController: UIViewController {
 
     override func viewDidLoad() {
+        view.backgroundColor = .red
         super.viewDidLoad()
         do {
                    try FirebaseAuth.Auth.auth().signOut()
                }
                catch {
                }
+            DatabaseManger.shared.test()
            }
            override func viewDidAppear(_ animated: Bool) {
                super.viewDidAppear(animated)
