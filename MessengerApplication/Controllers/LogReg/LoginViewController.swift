@@ -39,7 +39,9 @@ class LoginViewController: UIViewController {
             let user = result.user
             print("logged in user: \(user)")
             // if this succeeds, dismiss
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            let vs = self?.storyboard?.instantiateViewController(withIdentifier: "conversation") as! ConversationViewController
+            self?.navigationController?.pushViewController(vs, animated: true)
+           // strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
 
         
@@ -67,6 +69,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: UIButton) {
+        
      let vc = storyboard?.instantiateViewController(withIdentifier: "register")as!RegisterViewController
         
       self.navigationController?.pushViewController(vc, animated: true)
@@ -77,10 +80,12 @@ class LoginViewController: UIViewController {
     
     
     
-
+    
+    /// <#Description#>
     override func viewDidLoad() {
-        image.layer.cornerRadius = image.frame.size.width/2
         super.viewDidLoad()
+       // self.image.layer.cornerRadius = image.frame.size.width/2
+     
       
         
         
