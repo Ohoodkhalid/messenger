@@ -7,8 +7,11 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
@@ -85,6 +88,9 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             guard let result = authResult, error == nil else {
                 print("Error creating user")
                 return
+            }
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
             }
             let user = result.user
             print("Created User: \(user)")

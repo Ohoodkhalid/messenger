@@ -7,8 +7,10 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    private let spinner = JGProgressHUD(style: .dark)
     
     
     @IBOutlet weak var EmailLabel: UILabel!
@@ -26,12 +28,17 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func LogInButton(_ sender: UIButton) {
-       
+        
+        spinner.show(in: view)
         // Firebase Login
         FirebaseAuth.Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { [weak self] authResult, error in
             guard let strongSelf = self else {
                 return
             }
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss() 
+            }
+            
             guard let result = authResult, error == nil else {
                 print("Failed to log in user with email \(String(describing: self!.emailTextField))")
                 return
