@@ -84,16 +84,46 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
   
    
     @IBAction func registerButton(_ sender: UIButton) {
+        
         FirebaseAuth.Auth.auth().createUser(withEmail: EmailTextFieldReg.text!, password: PassworTextField.text!, completion: { authResult , error  in
             guard let result = authResult, error == nil else {
                 print("Error creating user")
                 return
             }
-            DispatchQueue.main.async {
-                self.spinner.dismiss()
-            }
+            
+        
+         
             let user = result.user
-            print("Created User: \(user)")
+            StorageManager.shared.uploadProfilePicture(with: self.imageProfile.image!.pngData()!, fileName: user.uid) { result  in
+                switch  result {
+                case .success(let url):
+                    var safeEmail = self.EmailTextFieldReg.text!.replacingOccurrences(of: ".", with: "-")
+                    safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+                    
+                    let chatUser = ChatAppUser(firstName: self.FirstNameTextField.text!, lastName: self.LastNameTextField.text!, emailAddress: self.EmailTextFieldReg.text!, profilePictureUrl: url )
+                    
+                    DatabaseManger.shared.insertUser(with: chatUser) { bool in
+                        DispatchQueue.main.async {
+                            self.spinner.dismiss()
+                            
+                            let vs = self.storyboard?.instantiateViewController(withIdentifier: "home")
+                            self.view.window?.rootViewController = vs!
+                            //let vs = self.storyboard?.instantiateViewController(withIdentifier: "conversation") as! ConversationViewController
+                            //self.navigationController?.pushViewController(vs, animated: true)
+                          }
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.spinner.dismiss()
+                      }
+                   
+                }
+               
+            }
+       
+           
+           
+            
         })
     }
     

@@ -44,10 +44,11 @@ class LoginViewController: UIViewController {
                 return
             }
             let user = result.user
+            UserDefaults.standard.set(self!.emailTextField.text , forKey: "email")
             print("logged in user: \(user)")
             // if this succeeds, dismiss
-            let vs = self?.storyboard?.instantiateViewController(withIdentifier: "conversation") as! ConversationViewController
-            self?.navigationController?.pushViewController(vs, animated: true)
+            let vs = self?.storyboard?.instantiateViewController(withIdentifier: "home")
+            strongSelf.view.window?.rootViewController = vs!
            // strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
 

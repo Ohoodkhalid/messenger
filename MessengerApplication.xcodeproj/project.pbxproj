@@ -13,6 +13,7 @@
 		F026D6A62730661300C30459 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = F026D6A52730661300C30459 /* MessageKit */; };
 		F026D6A9273066CE00C30459 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F026D6A8273066CE00C30459 /* SDWebImage */; };
 		F026D6AB273066CE00C30459 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F026D6AA273066CE00C30459 /* SDWebImageMapKit */; };
+		F026D6AD2731305400C30459 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F026D6AC2731305400C30459 /* StorageManager.swift */; };
 		F07D4B86272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
 		F07D4B87272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
 		F07D4B88272C8A5A00DAEBC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		F015D284272F04D2005B39CB /* DatabaseManger .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManger .swift"; sourceTree = "<group>"; };
 		F026D69F273056DF00C30459 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F026D6AC2731305400C30459 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F07D4B85272C8A5A00DAEBC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0AE09D7272947490054DF39 /* MessengerApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AE09DA272947490054DF39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		F0AE09CE272947490054DF39 = {
 			isa = PBXGroup;
 			children = (
+				F026D6AC2731305400C30459 /* StorageManager.swift */,
 				F015D284272F04D2005B39CB /* DatabaseManger .swift */,
 				F0AE0A20272979760054DF39 /* ConversationViewController.xib */,
 				F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */,
@@ -393,6 +396,7 @@
 			files = (
 				F0AE0A1727296B980054DF39 /* NewConversationViewController.swift in Sources */,
 				F0AE09DF272947490054DF39 /* LoginViewController.swift in Sources */,
+				F026D6AD2731305400C30459 /* StorageManager.swift in Sources */,
 				F0AE0A21272979760054DF39 /* ConversationViewController.swift in Sources */,
 				F0AE0A1327296B450054DF39 /* RegisterViewController.swift in Sources */,
 				F0AE09DB272947490054DF39 /* AppDelegate.swift in Sources */,

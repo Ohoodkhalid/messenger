@@ -18,6 +18,112 @@ import InputBarAccessoryView
     public var sentDate: Date // date time
     public var kind: MessageKind // text, photo, video, location, emoji
 }
+
+
+class ChatViewController: ConversationViewController {
+    
+    
+    , MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate
+    let currentUser = Sender(photoURL: <#T##String#>, senderId: "self", displayName: "ios")
+    var messages = [MessageType]()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .green
+       messages.append(Message(sender : currentUser , messageId :"1" ,sentDate:Date().addingTimeInterval(-86400),kind:.text("hello")))
+       messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+       messageInputBar.delegate = self
+        
+        
+    }
+    
+    
+   func currentSender() -> SenderType {
+     return currentUser
+  }
+    
+   func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+       return messages[indexPath.row]
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+   }
+    
+    
+   
+    
+   
+    
+  
+    
+    
+   
+
+                        
+         
+
+
+    
+
+
+
+
+
+
+
+/*extension MessageKind {
+    var messageKindString: String {
+        switch self {
+        case .text(_):
+            return "text"
+        case .attributedText(_):
+            return "attributed_text"
+        case .photo(_):
+            return "photo"
+        case .video(_):
+            return "video"
+        case .location(_):
+            return "location"
+        case .emoji(_):
+            return "emoji"
+        case .audio(_):
+            return "audio"
+        case .contact(_):
+            return "contact"
+        case .linkPreview(_):
+            return "link_preview"
+        case .custom(_):
+            return "custom"
+        }
+    }
+}
+// sender model
+struct Sender: SenderType {
+    public var photoURL: String // extend with photo URL
+    public var senderId: String
+    public var displayName: String
+    
+    
+}
+/// <#Description#>
+}
+
+*/
+}*/
+import UIKit
+import MessageKit
+import InputBarAccessoryView
+// message model
+struct Message: MessageType {
+    
+    public var sender: SenderType // sender for each message
+    public var messageId: String // id to de duplicate
+    public var sentDate: Date // date time
+    public var kind: MessageKind // text, photo, video, location, emoji
+}
 extension MessageKind {
     var messageKindString: String {
         switch self {
@@ -198,7 +304,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             return nil
         }
         
-      //  let safeCurrentEmail = DatabaseManger.safeEmail(emailAddress: currentUserEmail)
+        let safeCurrentEmail = DatabaseManger.safeEmail(emailAddress: currentUserEmail)
         
         let dateString = Self.dateFormatter.string(from: Date())
         let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail)_\(dateString)"
@@ -230,10 +336,5 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     }
     
     
-}*/
-
-    
-
-
-
+}
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BOp-TS-sAI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -105,17 +105,20 @@
                                             <action selector="signInWithGoogleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wYb-MK-S9Z"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-dM-MKw">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-dM-MKw">
                                         <rect key="frame" x="0.0" y="360" width="374" height="86"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you have  account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkb-Df-JlU">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="86"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you have  account?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkb-Df-JlU">
+                                                <rect key="frame" x="0.0" y="0.0" width="274" height="86"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wie-og-iB8">
-                                                <rect key="frame" x="187" y="0.0" width="187" height="86"/>
+                                                <rect key="frame" x="274" y="0.0" width="100" height="86"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="ZC9-Ng-714"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                                 <connections>
@@ -313,7 +316,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="AdT-Qm-mgx">
             <objects>
-                <tabBarController id="Wwd-R6-XyI" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="home" id="Wwd-R6-XyI" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wzc-5T-cJm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -331,7 +334,7 @@
         <!--Item-->
         <scene sceneID="K2n-yN-S63">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BOp-TS-sAI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="nav" automaticallyAdjustsScrollViewInsets="NO" id="BOp-TS-sAI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Rdd-CE-ZZj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zgl-oE-WFO">

@@ -21,9 +21,65 @@ class ProfileViewController: UIViewController {
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
             tableView.delegate = self
             tableView.dataSource = self
+             creatTableHeader()
+            
             
         }
+    
+   func creatTableHeader () {
+       let user = FirebaseAuth.Auth.auth().currentUser
+       let urlString = "images/\(user!.uid)"
+       StorageManager.shared.downloadURL(for: urlString) { result  in
+           switch result {
+           case .success(let url):
+               let profileImage = UIImageView(frame: .zero)
+               profileImage.contentMode = .scaleAspectFill
+               profileImage.layer.cornerRadius = 50
+               profileImage.layer.masksToBounds = true
+               URLSession.shared.dataTask(with: url, completionHandler: {data, _,error in
+                   guard let data = data ,error == nil else{
+                       return
+                   }
+                   DispatchQueue.main.async {
+                       let image = UIImage(data:data)
+                       profileImage.image = image
+                       let container = UIView(frame :CGRect(x: 0, y: 0, width: 100, height: 100))
+                       container.addSubview(profileImage)
+                       profileImage.translatesAutoresizingMaskIntoConstraints = false
+                       profileImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+                       profileImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                       profileImage.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+                       profileImage.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
+                       self.tableView.tableHeaderView = container
+                      
+                   }
+               }).resume()
+               
+           case .failure(let error):
+               break
+           }
+       }
+           
+       
+        
+     
     }
+    
+    
+    func downloadImage(imageView:UIImageView ,url:URL){
+        URLSession.shared.dataTask(with: url, completionHandler: {data, _,error in
+            guard let data = data ,error == nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data:data)
+                imageView.image = image
+            }
+        }).resume()
+    }
+    }
+
+
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return data.count
@@ -55,9 +111,9 @@ class ProfileViewController: UIViewController {
                 do {
                     try FirebaseAuth.Auth.auth().signOut()
                     
-                    let vs = self?.storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-                    self?.navigationController?.pushViewController(vs, animated: true)
+                    let vs = self?.storyboard?.instantiateViewController(withIdentifier: "nav")
                     
+                    self?.view.window?.rootViewController = vs 
                     // present login view controller
                    // let vc = LoginViewController()
                     //let nav = UINavigationController(rootViewController: vc)
