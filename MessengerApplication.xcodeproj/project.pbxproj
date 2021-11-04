@@ -39,6 +39,7 @@
 		F0AE0A1C27296D550054DF39 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */; };
 		F0AE0A21272979760054DF39 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE0A1F272979760054DF39 /* ConversationViewController.swift */; };
 		F0AE0A22272979760054DF39 /* ConversationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AE0A20272979760054DF39 /* ConversationViewController.xib */; };
+		F0E9C32F27331BDA00E27EE3 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E9C32E27331BDA00E27EE3 /* ConversationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		F0AE0A1F272979760054DF39 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		F0AE0A20272979760054DF39 /* ConversationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationViewController.xib; sourceTree = "<group>"; };
+		F0E9C32E27331BDA00E27EE3 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		F0AE09CE272947490054DF39 = {
 			isa = PBXGroup;
 			children = (
+				F0E9C32E27331BDA00E27EE3 /* ConversationTableViewCell.swift */,
 				F026D6AC2731305400C30459 /* StorageManager.swift */,
 				F015D284272F04D2005B39CB /* DatabaseManger .swift */,
 				F0AE0A20272979760054DF39 /* ConversationViewController.xib */,
@@ -402,6 +405,7 @@
 				F0AE09DB272947490054DF39 /* AppDelegate.swift in Sources */,
 				F015D285272F04D2005B39CB /* DatabaseManger .swift in Sources */,
 				F0AE0A1B27296D550054DF39 /* ProfileViewController.swift in Sources */,
+				F0E9C32F27331BDA00E27EE3 /* ConversationTableViewCell.swift in Sources */,
 				F0AE09DD272947490054DF39 /* SceneDelegate.swift in Sources */,
 				F026D6A0273056DF00C30459 /* ChatViewController.swift in Sources */,
 				F0AE0A0C2729685D0054DF39 /* extension.swift in Sources */,

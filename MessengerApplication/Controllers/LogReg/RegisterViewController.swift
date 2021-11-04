@@ -94,7 +94,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         
          
             let user = result.user
-            StorageManager.shared.uploadProfilePicture(with: self.imageProfile.image!.pngData()!, fileName: user.uid) { result  in
+            let safeEmail = DatabaseManger.safeEmail(emailAddress: self.EmailTextFieldReg.text!)
+            StorageManager.shared.uploadProfilePicture(with: self.imageProfile.image!.pngData()!, fileName: safeEmail) { result  in
                 switch  result {
                 case .success(let url):
                     var safeEmail = self.EmailTextFieldReg.text!.replacingOccurrences(of: ".", with: "-")

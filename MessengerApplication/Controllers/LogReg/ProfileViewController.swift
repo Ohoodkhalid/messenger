@@ -28,7 +28,8 @@ class ProfileViewController: UIViewController {
     
    func creatTableHeader () {
        let user = FirebaseAuth.Auth.auth().currentUser
-       let urlString = "images/\(user!.uid)"
+       let safeEmail = DatabaseManger.safeEmail(emailAddress: user!.email!)
+       let urlString = "images/\(safeEmail)"
        StorageManager.shared.downloadURL(for: urlString) { result  in
            switch result {
            case .success(let url):
@@ -114,11 +115,7 @@ class ProfileViewController: UIViewController {
                     let vs = self?.storyboard?.instantiateViewController(withIdentifier: "nav")
                     
                     self?.view.window?.rootViewController = vs 
-                    // present login view controller
-                   // let vc = LoginViewController()
-                    //let nav = UINavigationController(rootViewController: vc)
-                   // nav.modalPresentationStyle = .fullScreen
-                   // strongSelf.present(nav, animated: true)
+                  
                     
                 }
                 catch {

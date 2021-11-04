@@ -191,11 +191,12 @@ extension DatabaseManger {
      */
     
     /// creates a new conversation with target user email and first message sent
-    public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+    public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (String?) -> Void) {
         // put conversation in the user's conversation collection, and then 2. once we create that new entry, create the root convo with all the messages in it
-        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
-              let currentName = UserDefaults.standard.value(forKey: "name") as? String
+        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String
+             // let currentName = UserDefaults.standard.value(forKey: "name") as? String
         else {
+            completion(nil)
             return
         }
         let safeEmail = DatabaseManger.safeEmail(emailAddress: currentEmail) // cant have certain characters as keys
@@ -209,7 +210,7 @@ extension DatabaseManger {
             // what we care about is the conversation for this user
             guard var userNode = snapshot.value as? [String: Any] else {
                 // we should have a user
-                completion(false)
+                completion(nil)
                 print("user not found")
                 return
             }
@@ -261,7 +262,7 @@ extension DatabaseManger {
             let recipient_newConversationData: [String:Any] = [
                 "id": conversationId,
                 "other_user_email": safeEmail, // us, the sender email
-                "name": currentName,  // self for now, will cache later
+                "name": name,  // self for now, will cache later
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -299,7 +300,7 @@ extension DatabaseManger {
                 
                 ref.setValue(userNode) { [weak self] error, _ in
                     guard error == nil else {
-                        completion(false)
+                        completion(nil)
                         return
                     }
                     self?.finishCreatingConversation(name: name, conversationID: conversationId, firstMessage: firstMessage, completion: completion)
@@ -314,7 +315,7 @@ extension DatabaseManger {
                 
                 ref.setValue(userNode) { [weak self] error, _ in
                     guard error == nil else {
-                        completion(false)
+                        completion(nil)
                         return
                     }
                     self?.finishCreatingConversation(name: name, conversationID: conversationId, firstMessage: firstMessage, completion: completion)
@@ -326,7 +327,7 @@ extension DatabaseManger {
         
     }
     
-    private func finishCreatingConversation(name: String, conversationID:String, firstMessage: Message, completion: @escaping (Bool) -> Void){
+    private func finishCreatingConversation(name: String, conversationID:String, firstMessage: Message, completion: @escaping (String?) -> Void){
         //        {
         //            "id": String,
         //            "type": text, photo, video
@@ -366,7 +367,7 @@ extension DatabaseManger {
         }
         
         guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String else {
-            completion(false)
+            completion(nil)
             return
         }
         
@@ -392,10 +393,10 @@ extension DatabaseManger {
         
         database.child("\(conversationID)").setValue(value) { error, _ in
             guard error == nil else {
-                completion(false)
+                completion(nil)
                 return
             }
-            completion(true)
+            completion(conversationID)
         }
         
     }

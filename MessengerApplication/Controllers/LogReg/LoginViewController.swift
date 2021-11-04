@@ -44,7 +44,9 @@ class LoginViewController: UIViewController {
                 return
             }
             let user = result.user
+            
             UserDefaults.standard.set(self!.emailTextField.text , forKey: "email")
+           
             print("logged in user: \(user)")
             // if this succeeds, dismiss
             let vs = self?.storyboard?.instantiateViewController(withIdentifier: "home")
