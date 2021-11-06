@@ -8,8 +8,11 @@
 import UIKit
 import Firebase
 import JGProgressHUD
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
+   
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     
@@ -69,11 +72,10 @@ class LoginViewController: UIViewController {
        
     }
     
+    @IBOutlet weak var facbookButton: FBLoginButton!
     
     
-    @IBAction func continueWithFacebook(_ sender: UIButton) {
-    }
-    
+   
     
     @IBAction func signInWithGoogleButton(_ sender: UIButton) {
     }
@@ -89,32 +91,39 @@ class LoginViewController: UIViewController {
     
     
     
+   
     
     
     /// <#Description#>
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.image.layer.cornerRadius = image.frame.size.width/2
-     
-      
+        
+       // let continueWithFacebook = FBLoginButton()
+       // continueWithFacebook.permissions = ["public_profile", "email"]
+       // continueWithFacebook.delegate = self
+        
+        if let token = AccessToken.current, !token.isExpired {
+            
+            let token = token.tokenString
+            let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: token, version: nil, httpMethod: .get)
+            request.start(completionHandler: { connection,result,error in
+                print ("\(result)")
+            })
+            
+            
+            }
+    
+        
+        else {
+            facbookButton.permissions = ["public_profile", "email"]
+            facbookButton.delegate = self
+        ////facbookButton.center =
+            
+         
+           
+        }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      //UITapGesture
-
-        
-        
-        
-        // Do any additional setup after loading the view.
         
         
     }
@@ -123,3 +132,20 @@ class LoginViewController: UIViewController {
     
 }
 
+extension LoginViewController : LoginButtonDelegate {
+   
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        let token = result?.token?.tokenString
+        let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: token, version: nil, httpMethod: .get)
+        request.start(completionHandler: { connection,result,error in
+            print ("\(result)")
+        })
+        
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        
+        print ("Logout")
+    }
+}

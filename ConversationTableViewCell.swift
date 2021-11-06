@@ -46,11 +46,17 @@ class ConversationTableViewCell: UITableViewCell {
         userImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
+        userImageView.layer.cornerRadius =  userImageView.frame.size.width/2
+       // userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+       // userImageView.layer.cornerRadius =
+        
         userNameLable.translatesAutoresizingMaskIntoConstraints = false
-        userNameLable.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor,constant: 5).isActive = true
+        userNameLable.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor,constant: 20).isActive = true
         userNameLable.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
         
-        
+        userMessageLable.translatesAutoresizingMaskIntoConstraints = false
+        userMessageLable.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 20).isActive = true
+       userMessageLable.topAnchor.constraint(equalTo: userNameLable.bottomAnchor, constant: 5).isActive = true 
         
         
     }
@@ -62,7 +68,7 @@ class ConversationTableViewCell: UITableViewCell {
     
     
     public func configure(with model:Conversation){
-        self.userNameLable.text = model.latestMessage.text
+        self.userMessageLable.text = model.latestMessage.text
         self.userNameLable.text = model.name
        
        
