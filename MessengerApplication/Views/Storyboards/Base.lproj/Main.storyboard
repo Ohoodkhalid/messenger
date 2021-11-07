@@ -75,7 +75,6 @@
                                         <rect key="frame" x="0.0" y="240" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HAM-TY-Eff"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="bvG-yI-oJQ"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Continue with Facebook" cornerStyle="large">

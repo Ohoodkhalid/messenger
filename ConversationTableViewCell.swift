@@ -14,9 +14,11 @@ class ConversationTableViewCell: UITableViewCell {
     
     private let userImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 50
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -42,14 +44,11 @@ class ConversationTableViewCell: UITableViewCell {
         
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        userImageView.topAnchor.constraint(equalTo: contentView.topAnchor , constant: 5).isActive = true
-        userImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
+      
+        userImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        userImageView.layer.cornerRadius =  userImageView.frame.size.width/2
-       // userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-       // userImageView.layer.cornerRadius =
-        
+        userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+       
         userNameLable.translatesAutoresizingMaskIntoConstraints = false
         userNameLable.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor,constant: 20).isActive = true
         userNameLable.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true

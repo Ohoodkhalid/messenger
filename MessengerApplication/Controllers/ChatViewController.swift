@@ -173,7 +173,7 @@ class ChatViewController: MessagesViewController {
     public var isNewConversation = false
     
     private var messages = [Message]()
-    
+    private var currentUserName: String = ""
     
     
     
@@ -187,7 +187,19 @@ class ChatViewController: MessagesViewController {
         }
         
         // creating a new conversation, there is no identifier
-        
+        let email = UserDefaults.standard.value(forKey: "email") as? String
+        let safeEmail = DatabaseManger.safeEmail(emailAddress: email!)
+        DatabaseManger.shared.getAllUsers { result in
+            switch result {
+            case .success(let users):
+                let currentUser = users.first { user in
+                    user["email"] == safeEmail
+                }
+                self.currentUserName = currentUser!["name"]!
+            case .failure(let _):
+                break
+            }
+        }
         
         
     }
@@ -277,7 +289,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                   messageId: messageId,
                                   sentDate: Date(),
                                   kind: .text(text))
-            DatabaseManger.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: message) { [weak self] conversationId in
+            DatabaseManger.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", currentUserName: self.currentUserName, firstMessage: message) { [weak self] conversationId in
                 if conversationId != nil {
                     print("message sent")
                     self?.conversationId = conversationId

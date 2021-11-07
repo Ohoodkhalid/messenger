@@ -201,9 +201,7 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
         vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
-        let chat = conversations[indexPath.row]
-        let chatView = ChatViewController(with: chat.otherUserEmail, id: chat.id)
-       navigationController?.pushViewController(chatView, animated: true)
+       
     
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -191,7 +191,7 @@ extension DatabaseManger {
      */
     
     /// creates a new conversation with target user email and first message sent
-    public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (String?) -> Void) {
+    public func createNewConversation(with otherUserEmail: String, name: String, currentUserName: String, firstMessage: Message, completion: @escaping (String?) -> Void) {
         // put conversation in the user's conversation collection, and then 2. once we create that new entry, create the root convo with all the messages in it
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String
              // let currentName = UserDefaults.standard.value(forKey: "name") as? String
@@ -262,7 +262,7 @@ extension DatabaseManger {
             let recipient_newConversationData: [String:Any] = [
                 "id": conversationId,
                 "other_user_email": safeEmail, // us, the sender email
-                "name": name,  // self for now, will cache later
+                "name": currentUserName,  // self for now, will cache later
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -481,6 +481,7 @@ extension DatabaseManger {
             }
             
             guard var currentMessages = snapshot.value as? [[String: Any]] else {
+                debugPrint("Cannot get messages")
                 completion(false)
                 return
             }
