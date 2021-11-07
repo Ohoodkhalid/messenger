@@ -133,13 +133,6 @@
 		F0AE09CE272947490054DF39 = {
 			isa = PBXGroup;
 			children = (
-				F0E9C32E27331BDA00E27EE3 /* ConversationTableViewCell.swift */,
-				F026D6AC2731305400C30459 /* StorageManager.swift */,
-				F015D284272F04D2005B39CB /* DatabaseManger .swift */,
-				F0AE0A20272979760054DF39 /* ConversationViewController.xib */,
-				F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */,
-				F0AE0A1627296B980054DF39 /* NewConversationViewController.xib */,
-				F0AE0A1227296B450054DF39 /* RegisterViewController.xib */,
 				F0AE09D9272947490054DF39 /* MessengerApplication */,
 				F0AE09F02729474B0054DF39 /* MessengerApplicationTests */,
 				F0AE09FA2729474B0054DF39 /* MessengerApplicationUITests */,
@@ -201,6 +194,7 @@
 		F0AE0A0D27296A290054DF39 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F0E9C32E27331BDA00E27EE3 /* ConversationTableViewCell.swift */,
 				F0AE0A1F272979760054DF39 /* ConversationViewController.swift */,
 				F026D69F273056DF00C30459 /* ChatViewController.swift */,
 				F0AE0A1E272978B60054DF39 /* LogReg */,
@@ -219,6 +213,8 @@
 		F0AE0A0F27296A5E0054DF39 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F026D6AC2731305400C30459 /* StorageManager.swift */,
+				F015D284272F04D2005B39CB /* DatabaseManger .swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +229,10 @@
 		F0AE0A1D272974160054DF39 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				F0AE0A20272979760054DF39 /* ConversationViewController.xib */,
+				F0AE0A1A27296D550054DF39 /* ProfileViewController.xib */,
+				F0AE0A1627296B980054DF39 /* NewConversationViewController.xib */,
+				F0AE0A1227296B450054DF39 /* RegisterViewController.xib */,
 				F0AE09E0272947490054DF39 /* Main.storyboard */,
 				F0AE09E52729474B0054DF39 /* LaunchScreen.storyboard */,
 				F0AE09E32729474B0054DF39 /* Assets.xcassets */,
